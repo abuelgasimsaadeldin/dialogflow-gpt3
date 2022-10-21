@@ -14,7 +14,7 @@ git clone https://github.com/abuelgasimsaadeldin/dialogflow-gpt3.git
 
 3) Create .env file and place following: 
 ```
-OPENAI_API_KEY="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"
+OPENAI_API_KEY=""
 ```
 
 4) Install the dependencies:
