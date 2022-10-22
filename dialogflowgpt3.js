@@ -6,6 +6,10 @@ const axios = require('axios');
 const { WebhookClient } = require("dialogflow-fulfillment");
 const app = express();
 
+app.get('/', (req,res) => {
+  res.send('Welcome to Dialogflow-GPT3 Application!!');
+})
+
 app.post("/dialogflow", express.json(), (req, res) => {
     const agent = new WebhookClient({ request: req, response: res });
     let intentMap = new Map();
@@ -57,5 +61,6 @@ app.post("/dialogflow", express.json(), (req, res) => {
     
   }
 });
-const port = 3000;
+// const port = 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`App listening on port ${port}!`))
