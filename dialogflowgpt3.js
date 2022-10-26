@@ -18,7 +18,7 @@ app.post("/dialogflow", express.json(), (req, res) => {
     agent.handleRequest(intentMap);
   
     function welcome(agent) {
-      agent.add('<uneeq:joking>Hi, I am your virtual personal assistant from orient telecom. How are you doing today man?</uneeq:joking>');
+      agent.add('<uneeq:excited>Hi, I am your virtual personal assistant from orient telecom. How are you doing today?</uneeq:excited>');
   }
   
   async function defaultFallback(agent) {
