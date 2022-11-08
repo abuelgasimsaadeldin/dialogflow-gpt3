@@ -7,7 +7,7 @@ const { WebhookClient } = require("dialogflow-fulfillment");
 const app = express();
 
 app.get('/', (req,res) => {
-  res.send('Welcome to Dialogflow-GPT3 Application!!');
+  res.send('Welcome to Dialogflow-GPT3 new Application!!');
 })
 
 app.post("/dialogflow", express.json(), (req, res) => {
@@ -18,7 +18,7 @@ app.post("/dialogflow", express.json(), (req, res) => {
     agent.handleRequest(intentMap);
   
     function welcome(agent) {
-      agent.add('<uneeq:excited>Hi, I am your virtual personal assistant from orient telecom. How are you doing today?</uneeq:excited>');
+      agent.add('Hi, I am Debra! I am your virtual personal assistant from Orient Telecoms. How are you doing today?');
   }
   
   async function defaultFallback(agent) {
@@ -31,7 +31,7 @@ app.post("/dialogflow", express.json(), (req, res) => {
       const dialog = [
         `The following is a conversation with an AI assistant that can have meaningful conversations with users. The assistant is helpful, empathic, and friendly. Its objective is to make the user feel better by feeling heard. With each response, the AI assisstant prompts the user to continue the conversation in a natural way.
 
-        AI: <uneeq:happy>Hello, I am your personal AI assistant from orient telecom. How are you doing today bro?</uneeq:happy>`,
+        AI: Hello, my name is Debra. I am your personal AI assistant from Orient Telecoms. How are you doing today?`,
       ];
       let query = agent.query;
       console.log('querytext ', query)
@@ -61,6 +61,6 @@ app.post("/dialogflow", express.json(), (req, res) => {
     
   }
 });
-// const port = 3000;
-const port = process.env.PORT || 3000;
+
+const port = 3000;
 app.listen(port, () => console.log(`App listening on port ${port}!`))
