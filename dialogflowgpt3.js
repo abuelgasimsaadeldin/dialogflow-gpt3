@@ -1,7 +1,6 @@
 const express = require("express");
 require("actions-on-google")
 require('dotenv').config();
-// console.log(process.env)
 const axios = require('axios');
 const { WebhookClient } = require("dialogflow-fulfillment");
 const app = express();
@@ -22,7 +21,6 @@ app.post("/dialogflow", express.json(), (req, res) => {
   }
   
   async function defaultFallback(agent) {
-      // agent.add('Sorry! I am unable to understand this at the moment. I am still learning humans. You can pick any of the service that might help me.');
       const instance = axios.create({
         baseURL: 'https://api.openai.com/v1/',
         headers: { Authorization: `Bearer ${process.env.OPENAI_API_KEY}` },
@@ -37,7 +35,6 @@ app.post("/dialogflow", express.json(), (req, res) => {
       console.log('querytext ', query)
       dialog.push(`User: ${query}`);
       dialog.push('AI:');
-      // agent.add(`you said ${query}`)
     
       const completionParmas = {
         prompt: dialog.join('\n'),
@@ -51,14 +48,13 @@ app.post("/dialogflow", express.json(), (req, res) => {
       };
     
       try {
-        const result = await instance.post('/engines/davinci/completions', completionParmas);
+        const result = await instance.post('/engines/text-davinci-003/completions', completionParmas);
         const botResponse = result.data.choices[0].text.trim();
         agent.add(botResponse);
       } catch (err) {
         console.log(err);
         agent.add('Sorry. Something went wrong. Can you say that again?');
       }
-    
   }
 });
 
